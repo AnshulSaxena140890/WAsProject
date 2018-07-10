@@ -1,0 +1,35 @@
+{% extends "TODO/base.html" %}
+{% block content %}
+
+<div class = "centerCSS">
+    <br>
+    <br>
+    <br>
+    <br>
+     <div class="jumbotron">
+
+        {% for task in task_list %}
+        <div>
+            <h2><u>{{task.taskName}}</u></h2>
+            <h4>{{task.taskBrief}}</h4>
+            <br>
+            <p>Created On:{{task.createdAt|date:"D M Y"}}</p>
+            {% if task.isDone %}
+              <p>Status: Completed On: {{task.doneAt|date:"D M Y"}}</p>
+            {% else %}
+              <p>Status: In Process Of  Completion</p><a class="btn btn-success btn-sm" href="{% url 'task_done' pk=task.pk %}">Done</a>
+
+            {%endif%}
+            <a class="btn btn-primary btn-sm" href="{% url 'task_edit' pk=task.pk %}">Edit</a>
+            <a class="btn btn-warning btn-sm" href="{% url 'task_remove' pk=task.pk %}">Remove</a>
+
+            <br><br>
+
+        </div>
+        {% endfor %}
+     </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "TODO/base.html" %}
+{% block content %}
+<br><br>
+<div class="jumbotron">
+<form method="POST">
+    {%csrf_token%}
+    <h3>Are you sure to delete {{object}}?</h3>
+    <br>
+    <input type="submit" class="btn btn-danger" value="Confirm Delete">
+
+</form>
+</div>
+
+{% endblock %}
